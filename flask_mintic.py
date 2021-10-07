@@ -1,7 +1,15 @@
+from files import utils
+
 from flask import Flask
-from flask import render_template, url_for,redirect,request
+from flask import render_template, url_for,redirect,request,flash, redirect
+
+
+import os
 
 app = Flask(__name__)
+
+app.secret_key = os.urandom(24)
+
 
 @app.route('/')
 def hello():
@@ -16,7 +24,46 @@ def home():
 
 @app.route('/registro',methods=['GET','POST'])
 def registro():
-    return render_template('registro.html')
+
+    #Get data from register form
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+
+    #validate username, password and email
+    #pip install validate_email
+        if (not utils.isUsernameValid(username)):
+            error = 'User must be alphanumeric'
+            flash(error)
+            return render_template('registro.html')
+
+        elif(username=='' or username==None):
+            error = 'Please enter username'
+            flash(error)
+            return render_template('registro.html')
+
+        
+
+        if not utils.isPasswordValid(password):
+            error = "Invalid Password"
+            flash(error)
+            return render_template('registro.html')
+
+        if not utils.isEmailValid(email):
+            error = "Invalid Email"
+            flash(error)
+            return render_template('registro.html')
+        if (utils.isUsernameValid(username) and utils.isPasswordValid(password) and 
+            utils.isEmailValid(email)):
+
+            flash('Check your email to activate your account')  
+            return redirect('login')
+
+    if(request.method == 'GET'):
+        return render_template('registro.html')
+
+
 
 # MENU
 
@@ -52,6 +99,22 @@ def detalle_platos():
 
 @app.route('/login',methods=['GET','POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        if username == 'Prueba' and password == 'Prueba123':
+            return redirect('menu')
+        elif (username == '' or password == ''):
+            flash('User and password could not be empty')
+        else:
+            flash('Incorrect data')
+            
+            return render_template('login.html')
+
+    return render_template('login.html')
+
+
 
     return render_template('login.html')
 
