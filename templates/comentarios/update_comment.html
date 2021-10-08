@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+{% block title%} Editar Comentario {%endblock%}
+
+{%block body%}
+
+<div class="container">
+      <h1>EDITAR COMENTARIO</h1>
+      <br>
+      <form name="edit_comment" method="POST" action="{{url_for('update_comment')}}" >
+        <input type="text" placeholder="Comentario" name="comentario">
+        
+        <input class="btn btn-default" type="submit" value="Guardar Comentario">
+      </form>
+{%endblock%}
