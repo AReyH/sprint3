@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title%}{%endblock%}</title>
+</head>
+
+<body>
+
+	<section class="content">
+        {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+    </section>
+
+{%block body%}
+
+
+{%endblock%}
+
+
+</body>
+
+<footer>
+	<p>Developed by: MISION TIC 2021 Uninorte Group 4</p>
+	<a href="https://www.misiontic2022.gov.co/portal/">MISION TIC 2022</a>
+
+</footer>
+
+
+</html>

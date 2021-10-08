@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>Flask Intro - login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <section class="content">
+        {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+    </section>
+
+
+
+
+
+	<div class="box-form">
+		<div class="left">
+			<div class="overlay">
+			<h1>¡BIENVENIDO A CINNABON!  .</h1>
+			<p>El mejor restaurante del mundo, nuetra especialidad son los productos horneados</p>
+			<span>
+				
+			</div>
+		</div>
+		
+		
+			<div class="right">
+			<h5>INGRESA TUS DATOS</h5>
+			<p>¿No tienes una cuenta? <a href="#">Registrate</a> para iniciar sesión</p>
+
+
+			<form name="login" method="POST" action="{{url_for('login')}}" >
+				<div class="inputs">
+					<input type="text" name = "username" placeholder="usuario o e-mail">
+					<br>
+					<input type="password" name="password" placeholder="contraseña">
+				</div>
+					
+					<br><br>
+					
+				<div class="remember-me--forget-password">
+						<!-- Angular -->
+				<label>
+					<input type="checkbox" name="item" checked/>
+					<span class="text-checkbox">Recordar datos</span>
+				</label>
+					<p>Olvidé mi contraseña</p>
+				</div>
+					
+					<br>
+
+				<input class="btn btn-default" type="submit" value="Login">
+			</form>
+
+		</div>
+		
+	</div>
+
+</body>
+</html>
