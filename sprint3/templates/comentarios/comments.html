@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{% block title%} Comentarios {%endblock%}
+
+{%block body%}
+
+<!--RENDER EXISTING COMMENTS-->
+<h1>Comentarios</h1>
+
+<br>
+
+<!--INSERT button-->
+    <a href="{{ url_for('insert_comment') }}">Agregar</a>
+
+<br>
+<br>
+  {{ 'ID','Autor','Plato','Comentario','Fecha' }}
+  <br>
+  {% for comment in comments %}
+  
+    {{ comment.show() }}
+
+    <!--BUTTON ADD COMMENT -->
+
+
+    <!--EDIT button : calls the URL update_comment in main.py-->
+    <a href="{{ url_for('update_comment') }}">Editar</a>
+
+    <!-- DELETE BUTTON -->
+    <a href="{{ url_for('delete_comment') }}" onclick="return confirm('Are you sure to delete')">Borrar</a>
+    <br>
+
+  {% endfor %}
+              
+
+
+
+
+
+{%endblock%}
