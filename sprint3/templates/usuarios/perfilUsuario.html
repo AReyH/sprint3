@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+
+
+
+{% block title%} PERFIL DE USUARIO	{%endblock%}
+
+
+{%block body%}
+
+<div class="box-form">
+	<div class="izquierda">
+		<div class="superposición">
+		<h1>Hola, @usuario . </h1>
+		<p> ¿Que quieres hacer?</p>
+		<envergadura>
+			
+		</div>
+	</div>
+	
+
+		<div class="derecha">
+		<h5> ¿Eres administrador?</h5>
+        <div class="derecha"></div>
+		<p>Ingresa tus credenciales   <a href="{{ url_for('login')}}">Aqui</a > para acceder</p>
+            <div>
+        <a href="#">Mis compras</a >
+            <div>
+
+        <a href="#">Mis direcciones</a >
+            <div>
+
+        <a href="#">Mis datos</a >
+            <div>
+
+        <a href="#">Mis compras</a >
+            <div>
+
+        <a href="#">Privacidad</a >
+            <div>
+
+
+		<clase div ="entradas">
+			
+
+
+		</div>
+			
+			<br>
+			<button>Cerrar sesion </button>
+	</div>
+	
+</div>
+
+
+
+
+{% endblock%}
